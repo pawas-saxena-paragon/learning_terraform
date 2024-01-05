@@ -14,8 +14,9 @@ provider "aws" {
 }
 
 resource "aws_instance" "app_server" {
-  ami           = "ami-0a0f1259dd1c90938"
-  instance_type = "t2.micro"
+  ami                    = "ami-0a0f1259dd1c90938"
+  instance_type          = "t2.micro"
+  vpc_security_group_ids = [aws_security_group.tf_security_group.id]
 
   tags = {
     Name = random_pet.name.id
